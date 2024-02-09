@@ -1,0 +1,13 @@
+.direnv
+
+.DS_Store
+
+tmp.*
+
+*.pdfs
+*.pdf
+
+*.jpg
+*.jpeg
+*.png
+*.tiff
