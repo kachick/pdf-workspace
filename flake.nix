@@ -37,6 +37,7 @@
               pngquant
               img2pdf
               ocrmypdf
+              evince
             ];
           };
       }
