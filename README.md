@@ -8,11 +8,13 @@ Mostly personal use for now.
 
 ## Workflow
 
-Assume there are some images
+Assume there are some images in your directory
 
 ```bash
+cd 'dir_having_images'
+nix develop 'github:kachick/pdf-workspace'
 pngquant --skip-if-larger --force --ext .png "img1.png" "img2.png"
-./scripts/imgs2pdf.bash "img_dir" png jpn
+imgs2pdf "img_dir" png jpn
 ```
 
 ## Note

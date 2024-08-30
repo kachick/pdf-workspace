@@ -19,6 +19,7 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        imgs2pdf = pkgs.callPackage ./pkgs/imgs2pdf { };
       in
       {
         formatter = pkgs.nixfmt-rfc-style;
@@ -46,7 +47,7 @@
               img2pdf
               ocrmypdf
               evince
-            ];
+            ] ++ [ imgs2pdf ];
           };
       }
     );
