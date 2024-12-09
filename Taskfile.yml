@@ -25,6 +25,10 @@ tasks:
       - dprint check
       - typos . .github .vscode
       - git ls-files '*.nix' | xargs nixfmt --check
+      - git ls-files | xargs selfup list -check
+  selfup:
+    cmds:
+      - git ls-files | xargs selfup run
   deps:
     cmds:
       - nix --version
