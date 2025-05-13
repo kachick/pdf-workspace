@@ -57,7 +57,7 @@
                 pngquant
                 img2pdf
                 ocrmypdf
-                evince
+                papers # successor of evince
               ])
               ++ [
                 imgs2pdf
