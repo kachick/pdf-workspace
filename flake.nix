@@ -42,6 +42,7 @@
                 img2pdf
                 ocrmypdf
                 papers # successor of evince
+                html2pdf # https://github.com/NixOS/nixpkgs/pull/398379
               ])
               ++ [
                 imgs2pdf
