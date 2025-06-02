@@ -6,17 +6,12 @@
     # How to update the revision
     #   - `nix flake update --commit-lock-file` # https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake-update.html
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    selfup = {
-      url = "github:kachick/selfup/v1.1.8";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      selfup,
     }:
     let
       inherit (nixpkgs) lib;
@@ -61,7 +56,6 @@
               ])
               ++ [
                 imgs2pdf
-                selfup.packages.${system}.default
               ];
           };
         }
