@@ -47,6 +47,14 @@
               ++ [
                 imgs2pdf
               ];
+
+            # https://discourse.nixos.org/t/ensure-fonts-in-development-environment/20649/4
+            FONTCONFIG_FILE = pkgs.makeFontsConf {
+              fontDirectories = with pkgs; [
+                ibm-plex
+                biz-ud-gothic # https://github.com/NixOS/nixpkgs/pull/411145
+              ];
+            };
           };
         }
       );
