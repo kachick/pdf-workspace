@@ -18,7 +18,11 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          imgs2pdf = pkgs.callPackage ./pkgs/imgs2pdf { };
+          localPkgs = lib.packagesFromDirectoryRecursive {
+            inherit (pkgs) callPackage;
+            directory = ./pkgs;
+          };
+          inherit (localPkgs) imgs2pdf ipamjfont;
         in
         {
           default = pkgs.mkShellNoCC {
@@ -53,6 +57,7 @@
               fontDirectories = with pkgs; [
                 ibm-plex
                 biz-ud-gothic # https://github.com/NixOS/nixpkgs/pull/411145
+                ipamjfont # https://github.com/NixOS/nixpkgs/pull/437989
               ];
             };
           };
