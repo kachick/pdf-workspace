@@ -18,7 +18,11 @@
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          imgs2pdf = pkgs.callPackage ./pkgs/imgs2pdf { };
+          localPkgs = lib.packagesFromDirectoryRecursive {
+            inherit (pkgs) callPackage;
+            directory = ./pkgs;
+          };
+          inherit (localPkgs) imgs2pdf ipamjfont;
         in
         {
           default = pkgs.mkShellNoCC {
@@ -47,6 +51,20 @@
               ++ [
                 imgs2pdf
               ];
+
+            # https://discourse.nixos.org/t/ensure-fonts-in-development-environment/20649/4
+            FONTCONFIG_FILE = pkgs.makeFontsConf {
+              fontDirectories =
+                (with pkgs; [
+                  ibm-plex
+                  biz-ud-gothic # https://github.com/NixOS/nixpkgs/pull/411145
+                  mplus-outline-fonts.githubRelease
+                  noto-fonts-color-emoji
+                ])
+                ++ [
+                  ipamjfont # https://github.com/NixOS/nixpkgs/pull/437989
+                ];
+            };
           };
         }
       );
