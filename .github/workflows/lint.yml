@@ -7,7 +7,7 @@ on:
 jobs:
   dprint:
     timeout-minutes: 15
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - uses: dprint/check@v2.3
@@ -15,7 +15,7 @@ jobs:
           dprint-version: '0.55.1' # selfup {"extract":"\\d[^']+","replacer":["dprint", "--version"], "nth": 2}
   typos:
     timeout-minutes: 15
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v7
       - uses: crate-ci/typos@v1.48.0 # selfup {"extract":"\\d\\.\\d+\\.\\d+","replacer":["typos", "--version"], "nth": 2}
