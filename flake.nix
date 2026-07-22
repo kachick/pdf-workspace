@@ -46,6 +46,7 @@
                 pngquant
                 img2pdf
                 ocrmypdf
+                poppler-utils # `pdftoppm`, `pdfimages`
                 papers # successor of evince
                 html2pdf # https://github.com/NixOS/nixpkgs/pull/398379
               ])

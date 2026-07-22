@@ -17,6 +17,12 @@ pngquant --skip-if-larger --force --ext .png "img1.png" "img2.png"
 imgs2pdf "img_dir" png jpn
 ```
 
+Extract original images from a PDF
+
+```bash
+pdfimages -all base.pdf page
+```
+
 ## Note
 
 - [How to use tesseract](https://github.com/kachick/times_kachick/issues/165)
