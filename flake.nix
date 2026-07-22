@@ -31,7 +31,8 @@
                 bashInteractive
 
                 nixd
-                nixfmt-rfc-style
+                nixfmt
+                nixfmt-tree
                 dprint
                 typos
                 go-task
