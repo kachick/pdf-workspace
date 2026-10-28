@@ -1,11 +1,7 @@
-# https://taskfile.dev
+# https://taskfile.dev/styleguide/
+# Avoid chaining commands with ; or && in a single line. Use multiple cmd items for independent steps, or write a script under scripts/ instead.
 
 version: '3'
-
-# Style guide:
-# - Limit tasks to a single command unless sequence execution is required
-# - Define commands as separate tasks and combine them using deps
-# - If a command takes more than a screenful of arguments, write a script file instead
 
 tasks:
   default:
@@ -14,50 +10,25 @@ tasks:
       - task: lint
       - task: test
 
-  test:
-    cmds:
-      - echo 'Update here'
-
   check:
     deps:
       - task: test
       - task: lint
 
-  fmt:
-    deps:
-      - task: fmt-nix
-      - task: fmt-dprint
-      - task: fmt-typos
-
-  fmt-nix:
+  test:
     cmds:
-      - git ls-files '*.nix' | xargs nix fmt
+      - echo 'Update here'
 
-  fmt-dprint:
+  fmt:
     cmds:
       - dprint fmt
-
-  fmt-typos:
-    cmds:
-      - typos --write-changes
+      - git ls-files '*.nix' | xargs nix fmt
 
   lint:
-    deps:
-      - task: lint-nix
-      - task: lint-dprint
-      - task: lint-typos
-
-  lint-nix:
-    cmds:
-      - git ls-files '*.nix' | xargs nixfmt --check
-
-  lint-dprint:
     cmds:
       - dprint check
-
-  lint-typos:
-    cmds:
-      - typos
+      - typos . .github
+      - git ls-files '*.nix' | xargs nixfmt --check
 
   deps:
     cmds:
